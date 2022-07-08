@@ -1,0 +1,4 @@
+google-auth-oauthlib
+google-api-python-client
+tqdm~=4.64.0
+pandas~=1.4.3
