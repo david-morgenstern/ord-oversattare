@@ -9,7 +9,7 @@ def drive_service():
     client_secret_file = 'client_secrets.json'
     api_name = 'drive'
     api_version = 'v3'
-    scope = 'https://www.googleapis.com/auth/drive'
+    scope = ['https://www.googleapis.com/auth/drive']
     cred = None
 
     pickle_file = f'token_{api_name}_{api_version}.pickle'
@@ -22,7 +22,7 @@ def drive_service():
         if cred and cred.expired and cred.refresh_token:
             cred.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file(client_secret_file, scope)
+            flow = InstalledAppFlow.from_client_secrets_file(client_secret_file, scopes=scope)
             cred = flow.run_local_server()
 
         with open(pickle_file, 'wb') as token:
